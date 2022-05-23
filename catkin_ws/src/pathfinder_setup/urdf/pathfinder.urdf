@@ -1,0 +1,53 @@
+<!-- z distance = 20.5 inches -> 0.5207 meters
+y distance =  7 inches -> 0.1778 meters
+
+footprint to base link:
+
+z dist = 6.5 inches -> 0.1651 meters
+
+base_footprint
+
+base_footprint_joint
+
+base_link
+
+base_link_joint
+
+base_laser
+-->
+
+<?xml version = "1.0"?>
+
+<robot name = "pathfinder">
+    <link name = "base_footprint">
+    </link>
+    
+    <link name = "base_link">
+       <visual>
+            <geometry>
+                <cylinder length = "0.1651" radius = "0.508"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <link name = "base_laser">
+        <visual>
+            <geometry>
+                <cylinder length = "0.0763" radius = "0.0254"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name = "base_footprint_to_base_link" type = "fixed">
+        <parent link = "base_footprint"/>
+        <child link = "base_link"/>
+        <origin xyz = "0 0 0.1651"/>
+    </joint>
+
+    <joint name = "base_link_to_base_laser" type = "fixed"> 
+        <parent link = "base_link"/>
+        <child link = "base_laser"/>
+        <origin xyz = "0.1778 0 0.5207"/>
+    </joint>
+
+</robot>

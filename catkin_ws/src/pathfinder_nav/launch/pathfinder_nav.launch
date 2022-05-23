@@ -1,0 +1,5 @@
+<launch>
+  <include file="$(find pathfinder_nav)/launch/robot_config.launch"/> 
+  <include file="$(find pathfinder_nav)/launch/gmapping.launch"/> 
+  <include file="$(find pathfinder_nav)/launch/move_base.launch"/> 
+</launch>

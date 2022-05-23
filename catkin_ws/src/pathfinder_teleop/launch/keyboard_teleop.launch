@@ -1,0 +1,9 @@
+<launch>
+  <!-- keyboard already has its own built in velocity smoother -->
+  <node pkg="pathfinder_teleop" type="keyboard" name="pathfinder_teleop_keyboard"  output="screen">
+    <param name="scale_linear" value="0.5" type="double"/>
+    <param name="scale_angular" value="1.5" type="double"/>
+  </node>
+
+  <include file="$(find odrive_ros)/launch/odrive.launch"/> 
+</launch>

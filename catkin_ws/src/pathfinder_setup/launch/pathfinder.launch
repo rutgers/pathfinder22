@@ -1,0 +1,13 @@
+<launch>
+   <!-- Load the urdf into the parameter server. -->
+   <param name="robot_description" textfile="$(find pathfinder_setup)/urdf/pathfinder.urdf"/>
+    
+   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_pub" >
+   </node>
+
+
+   <node pkg="urg_node" type="urg_node" name="lidar_pub">
+   </node>
+      <node pkg="tf" type="static_transform_publisher" name="laser_broadcaster" args="0 0 0 0 0 0 1 base_laser laser 100" />
+
+</launch>
