@@ -37,6 +37,35 @@ base_laser
             </geometry>
         </visual>
     </link>
+   
+    <link name = "camera_link">
+        <visual>
+            <geometry>
+                <cylinder length = "0.02032" radius = "0.04445"/>
+            </geometry>
+        </visual>
+    </link>
+    <!--2.25 3.75-->
+
+    <link name = "pixhawk_link">
+        <visual>
+            <geometry>
+                <cylinder length = "0.09525" radius = "0.028575"/>
+            </geometry>
+        </visual>
+    </link>
+    
+    <joint name = "base_pixhawk_link" type = "fixed">
+        <parent link = "base_laser"/>
+        <child link = "pixhawk_link"/>
+        <origin xyz = "0.0635 0 0.2032"/>
+    </joint>
+
+    <joint name = "base_laser_to_camera_link" type = "fixed">
+        <parent link = "base_laser"/>
+        <child link = "camera_link"/>
+        <origin xyz = "0.0889 0 0.8001" rpy = "0 0.523599 0"/>
+    </joint>
 
     <joint name = "base_footprint_to_base_link" type = "fixed">
         <parent link = "base_footprint"/>
@@ -51,3 +80,4 @@ base_laser
     </joint>
 
 </robot>
+<!--31.5", 3.5"-->
