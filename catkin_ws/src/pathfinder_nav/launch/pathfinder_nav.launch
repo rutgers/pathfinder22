@@ -3,9 +3,13 @@
   <include file="$(find pathfinder_nav)/launch/gmapping.launch"/> 
   <include file="$(find pathfinder_nav)/launch/move_base.launch"/> 
 
+  <!-- <machine name="nano" address="nano" env-loader="/opt/ros/melodic/env.sh" user="fjdiez" />
+
+  <include file="$(find pathfinder_nav)/launch/realsense.launch" machine="nano"/> -->
+
   <node pkg="rostopic" type="rostopic" name="rostopic" args="pub vehicle_state std_msgs/String autonomous"/>
 
-  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization_node">
+  <!-- <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization_node">
     <param name="map_frame" value="map"/>
     <param name="odom_frame" value="odom"/>
     <param name="base_link_frame" value="base_footprint"/>
@@ -24,5 +28,5 @@
                                 true, true, false]</rosparam>
     <param name="odom0_differential" value="true"/>
     <param name="publish_tf" value="true"/>
-  </node>
+  </node> -->
 </launch>

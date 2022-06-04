@@ -2,9 +2,9 @@ global_costmap:
   global_frame: map
   robot_base_frame: base_footprint
   update_frequency: 5.0
-  width: 200
-  height: 200
+  width: 50
+  height: 50
   rolling_window: true
   plugins:
-     - {name: obstacle_layer,          type: "costmap_2d::ObstacleLayer"}
+     - {name: obstacle_layer,          type: "costmap_2d::VoxelLayer"}
      - {name: inflation_layer,         type: "costmap_2d::InflationLayer"}

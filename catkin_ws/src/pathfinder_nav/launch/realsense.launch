@@ -9,4 +9,4 @@
         args="load depth_image_proc/point_cloud_xyz nodelet_manager">
     <remap from="camera_info" to="/info_rect"/>
   </node>
-<launch>
+</launch>

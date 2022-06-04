@@ -6,7 +6,7 @@
    	</node>
 
    	<node pkg="urg_node" type="urg_node" name="lidar_pub">
-       	<param name="serial_port" value="/dev/ttyACM1"/>
+       	<param name="serial_port" value="/dev/ttyACM2"/>
    	</node>
 
    	<node pkg="robot_localization" type="navsat_transform_node" name="UTM_pub">
@@ -21,11 +21,11 @@
 		<remap from="/gps/fix" to="/mavros/global_position/global"/>	
 	</node>
 	
-	<node pkg="pathfinder_setup" type="led_control" name="led_control"/>
+	<!-- <node pkg="pathfinder_setup" type="led_control" name="led_control"/> -->
 		
 	<node pkg="tf" type="static_transform_publisher" name="laser_broadcaster" args="0 0 0 0 0 0 1 base_laser laser 100" />
 
-	<arg name="fcu_url" default="/dev/ttyACM0:57600" />
+	<arg name="fcu_url" default="/dev/ttyACM1:57600" />
 	<arg name="gcs_url" default="" />
 	<arg name="tgt_system" default="1" />
 	<arg name="tgt_component" default="1" />

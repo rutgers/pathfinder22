@@ -9,19 +9,13 @@ import sys
 import rospy
 from std_msgs.msg import String
 
-if(platform.system() != "Linux"):
-	sys.exit("Linux only")
+rospy.init_node('led_control')
 
-while(True):
-	probable_port = glob.glob("/dev/ttyUSB*")
-	if len(probable_port) > 0:
-		ser = serial.Serial(probable_port[0], 9600, timeout = 5)
-		print("Connected")
-		break
-	time.sleep(1)
-	print("Looking for Arduino")
+ser = None
 
 def callback(data):
+	global ser
+	rospy.loginfo("Recieved vehicle state: " + data.data)
 	if data.data == "autonomous":
 		ser.write('a'.encode('utf-8')) # just a character for the arduino to recieve 
 	else:
@@ -29,11 +23,25 @@ def callback(data):
 
 
 def listener():
+	global ser
+	if(platform.system() != "Linux"):
+		sys.exit("Linux only")
 
-	rospy.init_node('led_control', anonymous=True)
+	while(True):
+		probable_port = glob.glob("/dev/ttyUSB1")
+		if len(probable_port) > 0:
+			ser = serial.Serial(probable_port[0], 9600, timeout = 5)
+			#ser.write('a'.encode('utf-8')) # just a character for the arduino to recieve 
+			rospy.loginfo("Connected")
+			break
+		time.sleep(1)
+
+	rospy.loginfo("Startng listener")
 	rospy.Subscriber("vehicle_state", String, callback)
 	rospy.spin()
+# if __name__ == '__main__':
 listener()
+
 
 # testing
 
